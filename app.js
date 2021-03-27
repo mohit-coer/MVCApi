@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-
 const db =
   "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false";
 mongoose.connect(db, (err) => {
@@ -12,7 +11,6 @@ mongoose.connect(db, (err) => {
     console.log("Connected to Mongoose.....");
   }
 });
-console.log("called");
 const authRouters = require("./routes/auth");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
