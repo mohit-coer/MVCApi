@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const verifyToken = require("./middlewares/authmiddleware");
+const userRouters = require("./routes/user");
 const db =
   "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false";
 mongoose.connect(db, (err) => {
@@ -28,5 +30,6 @@ app.use((req, res, next) => {
   next();
 });
 app.use("/auth", authRouters);
+app.use("/user", verifyToken, userRouters);
 
 module.exports = app;
