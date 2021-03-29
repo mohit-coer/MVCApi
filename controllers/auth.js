@@ -26,6 +26,7 @@ exports.register = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
+  console.log(req.body);
   let userData = req.body;
   authModel.findOne({ email: userData.email }, async (error, user) => {
     if (error) {
